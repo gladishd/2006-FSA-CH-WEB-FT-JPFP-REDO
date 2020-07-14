@@ -70,7 +70,7 @@ describe("Tier One: Campuses", () => {
 
     // This test is interested in the unconnected AllCampuses component. It is
     // exported as a named export in app/components/AllCampuses.js
-    xit("renders the campuses passed in as props", () => {
+    it("renders the campuses passed in as props", () => {
       const wrapper = mount(
         <UnconnectedAllCampuses
           campuses={campuses}
@@ -88,7 +88,7 @@ describe("Tier One: Campuses", () => {
       ]);
     });
 
-    xit("renders DIFFERENT campuses passed in as props", () => {
+    it("renders DIFFERENT campuses passed in as props", () => {
       const differentCampuses = [
         {
           id: 3,
@@ -120,14 +120,22 @@ describe("Tier One: Campuses", () => {
       ]);
     });
 
-    xit('*** renders "No Campuses" if passed an empty array of campuses', () => {
-      throw new Error("replace this error with your own test");
+    it('*** renders "No Campuses" if passed an empty array of campuses', () => {
+      // throw new Error("replace this error with your own test");
+      const emptyCampusesArray = [];
+      const wrapper = mount(
+        <UnconnectedAllCampuses
+          campuses={emptyCampusesArray}
+          getCampuses={getCampusesSpy}
+        />
+      );
+      expect(wrapper.text()).to.include("No Campuses");
     });
 
     // In a later step, we'll create a thunk, and map that thunk to AllCampuses
     // as getCampuses. For right now, we just need to be sure the component
     // calls it after it mounts.
-    xit("calls this.props.getCampuses after mount", async () => {
+    it("calls this.props.getCampuses after mount", async () => {
       mount(
         <UnconnectedAllCampuses
           campuses={campuses}
@@ -148,7 +156,7 @@ describe("Tier One: Campuses", () => {
 
     // Check out app/redux/campuses.js for these two tests
     describe("set/fetch campuses", () => {
-      xit("setCampuses action creator returns a valid action", () => {
+      it("setCampuses action creator returns a valid action", () => {
         expect(setCampuses(campuses)).to.deep.equal({
           type: "SET_CAMPUSES",
           campuses
