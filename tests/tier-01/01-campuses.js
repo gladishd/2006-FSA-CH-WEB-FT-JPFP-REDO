@@ -208,7 +208,7 @@ describe("Tier One: Campuses", () => {
     // This test is expecting your component to dispatch a thunk after it mounts
     // Remember that getCampuses prop from an earlier test? Now's a good time
     // for a mapDispatch.
-    xit("initializes campuses from the server when the application loads the /campuses route", async () => {
+    it("initializes campuses from the server when the application loads the /campuses route", async () => {
       const reduxStateBeforeMount = store.getState();
       expect(reduxStateBeforeMount.campuses).to.deep.equal([]);
       mount(
@@ -257,7 +257,7 @@ describe("Tier One: Campuses", () => {
 
     // This test expects that you've set up a Route for AllCampuses.
     // You should take a look at app/components/Routes.js
-    xit("renders <AllCampuses /> at /campuses", () => {
+    it("renders <AllCampuses /> at /campuses", () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/campuses"]}>

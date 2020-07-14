@@ -27,10 +27,10 @@ let campuses = [
 ];
 export class AllCampuses extends React.Component {
   componentDidMount() {
-    this.props.getCampuses();
+    // this.props.getCampuses();
   }
   render() {
-    campuses = this.props.campuses;
+    // campuses = this.props.campuses;
     // console.log(this.props.campuses)
     return (
       <div>
