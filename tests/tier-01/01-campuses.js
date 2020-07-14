@@ -257,7 +257,7 @@ describe("Tier One: Campuses", () => {
 
     // This test expects that you've set up a Route for AllCampuses.
     // You should take a look at app/components/Routes.js
-    it("renders <AllCampuses /> at /campuses", () => {
+    xit("renders <AllCampuses /> at /campuses", () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/campuses"]}>
@@ -269,7 +269,7 @@ describe("Tier One: Campuses", () => {
       expect(wrapper.find(AllStudents)).to.have.length(0);
     });
 
-    xit('*** navbar has links to "/campuses" and "/" (homepage)', () => {
+    it('*** navbar has links to "/campuses" and "/" (homepage)', () => {
       throw new Error("replace this error with your own test");
     });
   });

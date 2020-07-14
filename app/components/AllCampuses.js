@@ -27,20 +27,19 @@ let campuses = [
 ];
 export class AllCampuses extends React.Component {
   componentDidMount() {
-    // this.props.getCampuses();
+    this.props.getCampuses();
   }
   render() {
-    // campuses = this.props.campuses;
-    // console.log(this.props.campuses)
+    console.log(this.props)
     return (
       <div>
         {
           <div>
-            {campuses[0] === undefined ?
+            {this.props.campuses[0] === undefined ?
               'No Campuses' : 'Campuses:'}
           </div>
         }
-        {campuses
+        {this.props.campuses
           .map((campus) => {
             return (
               <div key={campus.id}>
