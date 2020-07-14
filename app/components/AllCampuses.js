@@ -1,5 +1,7 @@
 import React from "react";
+// we need this to connect react to redux
 import { connect } from "react-redux";
+import { fetchCampuses } from '../redux/campuses';
 
 // Notice that we're exporting the AllCampuses component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -53,12 +55,14 @@ export class AllCampuses extends React.Component {
   }
 }
 
-const mapState = () => {
-  return {};
+const mapState = (state) => {
+  return { campuses: state.campuses };
 };
 
-const mapDispatch = () => {
-  return {};
+const mapDispatch = (dispatch) => {
+  return {
+    getCampuses: () => { dispatch(fetchCampuses()) }
+  };
 };
 
 export default connect(mapState, mapDispatch)(AllCampuses);

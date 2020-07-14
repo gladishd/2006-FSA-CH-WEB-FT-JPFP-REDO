@@ -7,6 +7,10 @@ const router = require("express").Router();
 // You can put all routes in this file HOWEVER,
 // this file should almost be like a table of contents for the routers you create!
 // For example:
+
+router.use('/campuses', require('./campuses'));
+// so GET /api/campuses knows where to look
+
 //
 // For your `/api/puppies` routes:
 // router.use('/puppies', require('./puppies'))
@@ -19,10 +23,18 @@ const router = require("express").Router();
 // middleware will generate a 404, and send it to your
 // error-handling endware!
 
+
+
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;
   next(err);
 });
+
+// error handling endware, for when the errors fall through:
+router.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.send(err.message || 'Internal server error')
+})
 
 module.exports = router;
