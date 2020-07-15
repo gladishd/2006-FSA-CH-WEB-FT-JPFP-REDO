@@ -67,7 +67,7 @@ describe("Tier One: Students", () => {
 
     // This test is interested in the unconnected AllStudents component. It is
     // exported as a named export in app/components/AllStudents.js
-    xit("renders the students passed in as props", () => {
+    it("renders the students passed in as props", () => {
       const wrapper = mount(
         <UnconnectedAllStudents
           students={students}
@@ -78,7 +78,8 @@ describe("Tier One: Students", () => {
       expect(wrapper.text()).to.include("Sally Ride");
     });
 
-    xit("renders DIFFERENT students passed in as props", () => {
+    // so it's not hard-coded
+    it("renders DIFFERENT students passed in as props", () => {
       const differentStudents = [
         {
           id: 3,
@@ -103,8 +104,16 @@ describe("Tier One: Students", () => {
       expect(wrapper.text()).to.include("Ada Lovelace");
     });
 
-    xit('*** renders "No Students" if passed an empty array of students', () => {
-      throw new Error("replace this error with your own test");
+    it('*** renders "No Students" if passed an empty array of students', () => {
+      // throw new Error("replace this error with your own test");
+      const emptyStudentsArray = [];
+      const wrapper = mount(
+        <UnconnectedAllStudents
+          students={emptyStudentsArray}
+          getStudents={getStudentsSpy}
+        />
+      );
+      expect(wrapper.text()).to.include("No Students");
     });
 
     // In a later step, we'll create a thunk, and map that thunk to AllStudents

@@ -5,8 +5,30 @@ import { connect } from "react-redux";
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllStudents extends React.Component {
+  componentDidMount() {
+    this.props.getStudents();
+  }
   render() {
-    return <div />;
+    return (
+      <div>
+        {
+          <div>
+            {this.props.students[0] === undefined ?
+              'No Students' : 'Students:'}
+          </div>
+        }
+
+
+        {this.props.students
+          .map((student) => {
+            return (
+              <div key={student.id}>
+                Name: {student.firstName + ' ' + student.lastName}
+              </div>
+            )
+          })}
+      </div>
+    )
   }
 }
 
