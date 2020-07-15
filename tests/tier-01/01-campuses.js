@@ -270,7 +270,17 @@ describe("Tier One: Campuses", () => {
     });
 
     it('*** navbar has links to "/campuses" and "/" (homepage)', () => {
-      throw new Error("replace this error with your own test");
+      // throw new Error("replace this error with your own test");
+      const wrapper = mount(
+        <Provider>
+          <MemoryRouter>
+            <Routes />
+          </MemoryRouter>
+        </Provider>
+      );
+      expect(wrapper.find('Link')).to.have.length(2);
+      expect(wrapper.find("Link[to='/']")).to.have.length(1);
+      expect(wrapper.find("Link[to='/campuses']")).to.have.length(1);
     });
   });
 
