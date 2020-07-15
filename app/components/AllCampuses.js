@@ -30,7 +30,6 @@ export class AllCampuses extends React.Component {
     this.props.getCampuses();
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         {
@@ -55,6 +54,7 @@ export class AllCampuses extends React.Component {
 }
 
 const mapState = (state) => {
+  // console.log(state)
   return { campuses: state.campuses };
 };
 

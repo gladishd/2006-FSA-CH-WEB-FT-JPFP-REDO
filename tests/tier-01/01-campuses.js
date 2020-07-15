@@ -257,7 +257,7 @@ describe("Tier One: Campuses", () => {
 
     // This test expects that you've set up a Route for AllCampuses.
     // You should take a look at app/components/Routes.js
-    xit("renders <AllCampuses /> at /campuses", () => {
+    it("renders <AllCampuses /> at /campuses", () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/campuses"]}>

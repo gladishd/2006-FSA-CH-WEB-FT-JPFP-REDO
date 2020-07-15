@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { AllCampuses } from './AllCampuses'
+// import { AllCampuses } from './AllCampuses'
+import AllCampuses from './AllCampuses' // we need to import the connected component instead
 import Navbar from './Navbar';
 
 const Routes = () => {
