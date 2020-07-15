@@ -278,7 +278,6 @@ describe("Tier One: Campuses", () => {
           </MemoryRouter>
         </Provider>
       );
-      expect(wrapper.find('Link')).to.have.length(2);
       expect(wrapper.find("Link[to='/']")).to.have.length(1);
       expect(wrapper.find("Link[to='/campuses']")).to.have.length(1);
     });

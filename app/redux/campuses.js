@@ -20,7 +20,8 @@ export const fetchCampuses = () => {
       // console.log('the response is, ', response)
       dispatch(setCampuses(data));
     } catch (error) {
-      // console.error(error);
+      // next(error);
+      console.error(error);
     }
   }
 };
