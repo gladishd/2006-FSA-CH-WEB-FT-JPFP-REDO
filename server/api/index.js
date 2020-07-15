@@ -9,7 +9,10 @@ const router = require("express").Router();
 // For example:
 
 router.use('/campuses', require('./campuses'));
-// so GET /api/campuses knows where to look
+// so GET /api/campuses knows where to look.
+
+// we have to use the second route, which is for students and is for Tier 1.
+router.use('/students', require('./students'));
 
 //
 // For your `/api/puppies` routes:

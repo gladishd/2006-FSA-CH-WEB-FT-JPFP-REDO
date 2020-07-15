@@ -278,7 +278,8 @@ describe("Tier One: Students", () => {
       Student.findAll = studentFindAll;
     });
 
-    xit("*** GET /api/students responds with all students", async () => {
+    // for this one we actually have to add a GET route on the API.
+    it("*** GET /api/students responds with all students", async () => {
       // throw new Error("replace this error with your own test");
       const app = require("../../server");
       const agent = require("supertest")(app);
@@ -340,7 +341,21 @@ describe("Tier One: Students", () => {
     });
 
     it("*** email must be a valid email", async () => {
-      throw new Error("replace this error with your own test");
+      // throw new Error("replace this error with your own test");
+      const student = Student.build({
+        firstName: "not empty",
+        lastName: "not empty",
+        email: "foo @bar.com"
+        // email: "doesn't have an At symbol"
+      });
+      try {
+        await student.validate();
+        throw Error(
+          "if this message prints out, the validation didn't fail properly"
+        );
+      } catch (error) {
+        expect(error.message).to.contain('Validation isEmail on email failed')
+      }
     });
 
     it("gpa must be a float between 0.0 and 4.0", async () => {
@@ -380,7 +395,7 @@ describe("Tier One: Students", () => {
   describe("Seed file", () => {
     beforeEach(seed);
 
-    xit("populates the database with at least four students", async () => {
+    it("populates the database with at least four students", async () => {
       const seededStudents = await Student.findAll();
       expect(seededStudents).to.have.lengthOf.at.least(4);
     });

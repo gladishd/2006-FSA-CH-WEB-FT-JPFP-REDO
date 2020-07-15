@@ -1,6 +1,6 @@
 const { green, red } = require("chalk");
 const { db } = require("./server/db");
-const { Campus } = require("./server/db");
+const { Campus, Student } = require("./server/db");
 
 const campusList = [
   {
@@ -20,6 +20,43 @@ const campusList = [
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/03/University_of_texas_at_austin_main_building_2014.jpg',
     address: "4 E. Mayflower Ave. Elmhurst, NY 11373",
     description: "the third academy"
+  },
+  {
+    name: "FullStack Academy's fourth campus",
+    imageUrl: 'https://www.utica.edu/sites/default/files/styles/width_2520x1120/public/2020-03/uc_science_annex_rendering.jpg?h=5ae4ef65&itok=AcixSjFp',
+    address: "45 La Sierra St. West Des Moines, IA 50265",
+    description: "the fourth academy"
+  }
+]
+
+const studentsToPopulate = [
+  {
+    firstName: "FullStack's first",
+    lastName: "snoo",
+    email: "snoo1@fllstck.com",
+    gpa: 4.0,
+    campusId: 1
+  },
+  {
+    firstName: "FullStack's second",
+    lastName: "snoo",
+    email: "snoo2@fullstk.com",
+    gpa: 4.0,
+    // not assigned to a campus
+  },
+  {
+    firstName: "FullStack's third",
+    lastName: "snoo",
+    email: "snoo3@fullstaaak.com",
+    gpa: 4.0,
+    campusId: 3
+  },
+  {
+    firstName: "FullStack's fourth",
+    lastName: "snoo",
+    email: "snoo4@fullstaaak.com",
+    gpa: 4.0,
+    campusId: 3 // the third campus has two students
   }
 ]
 
@@ -29,6 +66,7 @@ const seed = async () => {
 
     // seed your database here!
     await Promise.all(campusList.map(campus => Campus.create(campus)));
+    await Promise.all(studentsToPopulate.map(student => Student.create(student)));
   } catch (err) {
     console.log(red(err));
   }
