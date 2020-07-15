@@ -74,6 +74,7 @@ describe("Tier One: Students", () => {
           getStudents={getStudentsSpy}
         />
       );
+      // console.log(wrapper)
       expect(wrapper.text()).to.include("Mae Jemison");
       expect(wrapper.text()).to.include("Sally Ride");
     });

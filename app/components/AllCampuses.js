@@ -30,6 +30,8 @@ export class AllCampuses extends React.Component {
     this.props.getCampuses();
   }
   render() {
+    // console.log(this.state) // line 33 will run once when it renders for the first time
+    // componentdidmount gets called after that, and it re-renders
     return (
       <div>
         {
@@ -38,16 +40,18 @@ export class AllCampuses extends React.Component {
               'No Campuses' : 'Campuses:'}
           </div>
         }
-        {this.props.campuses
-          .map((campus) => {
-            return (
-              <div key={campus.id}>
-                Name: {campus.name}
-
-                image: <img src={campus.imageUrl} />
-              </div>
-            )
-          })}
+        <div className='flex-container'>
+          {this.props.campuses
+            .map((campus) => {
+              return (
+                <div key={campus.id}>
+                  Name: {campus.name}
+                  <br></br>
+                  <img src={campus.imageUrl} />
+                </div>
+              )
+            })}
+        </div>
       </div>
     )
   }
@@ -60,7 +64,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getCampuses: () => { dispatch(fetchCampuses()) }
+    getCampuses: () => { dispatch(fetchCampuses()) } // every time a state changes, it triggers a re-render
   };
 };
 

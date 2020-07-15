@@ -65,7 +65,9 @@ const seed = async () => {
     await db.sync({ force: true });
 
     // seed your database here!
-    await Promise.all(campusList.map(campus => Campus.create(campus)));
+    await Promise.all(campusList.map(campus => Campus.create(campus))); // provides status message and way to resolve/reject what's happening
+    // centralized object; run all the calls in parallel.  The awaits are synchronous, NOT asynchronous.
+
     await Promise.all(studentsToPopulate.map(student => Student.create(student)));
   } catch (err) {
     console.log(red(err));

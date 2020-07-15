@@ -9,7 +9,8 @@
 }
 
 body {
-  background: linear-gradient(#ffffff, #5e5e5e);
+  background: linear-gradient(to right, #d4d4d4, #5e5e5e8f, #d4d4d4, #5e5e5ec0, #d4d4d4, #5e5e5e8f, #d4d4d4);
+  background-repeat: repeat;
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -64,4 +65,26 @@ main {
   justify-content: center;
 
   padding-top: 5em;
+}
+
+img {
+  width: 150px;
+  height: 170px;
+  margin-left: 425px
+  /* padding-left seems to squish things so I'm doing a margin for now */
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(#9e656f6e, #b191e52d);
+}
+
+.flex-container > div {
+  background: linear-gradient(#a5a3a363, #9ba08c5d, #a5a3a35d);
+  width: 600px;
+  margin: 10px;
+  text-align: left;
+  line-height: 75px;
+  font-size: 30px;
 }
