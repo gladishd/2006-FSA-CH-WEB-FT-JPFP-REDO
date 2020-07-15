@@ -70,7 +70,7 @@ main {
 img {
   width: 150px;
   height: 170px;
-  margin-left: 425px
+  /* margin-left: 425px */
   /* padding-left seems to squish things so I'm doing a margin for now */
 }
 
@@ -78,13 +78,15 @@ img {
   display: flex;
   flex-direction: column;
   background: radial-gradient(#9e656f6e, #b191e52d);
+  justify-content: space-around;
 }
 
 .flex-container > div {
   background: linear-gradient(#a5a3a363, #9ba08c5d, #a5a3a35d);
   width: 600px;
   margin: 10px;
-  text-align: left;
+  text-align: center;
   line-height: 75px;
   font-size: 30px;
+
 }

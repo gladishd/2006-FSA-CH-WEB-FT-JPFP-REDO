@@ -48,6 +48,7 @@ export class AllCampuses extends React.Component {
                   Name: {campus.name}
                   <br></br>
                   <img src={campus.imageUrl} />
+                  <div></div>
                 </div>
               )
             })}
