@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class StudentForm extends React.Component {
+export class CampusForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,20 +10,18 @@ export class StudentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   componentDidMount() {
-
   }
 
   handleChange(e) { // the default behavior isn't to refresh the page, but we should still prevent default.
     e.preventDefault();
-    this.setState({ name: event.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault(); // the default behavior here is to refresh the page
-    console.log(this.state.name)
-  }
+    console.log(this.state);
+  } // we should also call an addStudent method in the Redux store, except we should do it here
 
   render() {
     return (
@@ -31,7 +29,11 @@ export class StudentForm extends React.Component {
         <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="name">Name: </label>
           <input name="name" type="text" onChange={e => this.handleChange(e)} />
-          <button type="submit" className="submitButton">
+          <br></br>
+          <label htmlFor="address">Address: </label>
+          <input name="address" type="text" onChange={e => this.handleChange(e)} />
+          <br></br>
+          <button type="submit">
             Submit!
           </button>
         </form>
@@ -42,4 +44,4 @@ export class StudentForm extends React.Component {
 }
 
 
-export default StudentForm;
+export default CampusForm;

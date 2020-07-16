@@ -91,3 +91,13 @@ img {
   border-style: groove;
 
 }
+
+button {
+  text-align: right;
+  background-color: rgba(83, 146, 88, 0.425);
+}
+
+form {
+  text-align: right;
+  background-color: rgba(55, 158, 255, 0.459);
+}
