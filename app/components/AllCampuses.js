@@ -29,6 +29,12 @@ export class AllCampuses extends React.Component {
   componentDidMount() {
     this.props.getCampuses();
   }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.history.push((`/campuses/${e.target.id}`))
+  }
+
   render() {
     // console.log(this.state) // line 33 will run once when it renders for the first time
     // componentdidmount gets called after that, and it re-renders
@@ -44,7 +50,7 @@ export class AllCampuses extends React.Component {
           {this.props.campuses
             .map((campus) => {
               return (
-                <div key={campus.id}>
+                <div id={campus.id} onClick={(e) => this.handleClick(e)}>
                   Name: {campus.name}
                   <br></br>
                   <img src={campus.imageUrl} />
