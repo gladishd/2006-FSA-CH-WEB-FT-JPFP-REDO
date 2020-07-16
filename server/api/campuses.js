@@ -17,7 +17,7 @@ router.get('/:campusIdSlug', async (req, res, next) => {
   try {
     const specificCampusWithStudents = await Campus.findOne({
       where: { id: req.params.campusIdSlug }, // query the Student model as well
-      include: Student
+      include: [{ model: Student }]
     });
     res.json(specificCampusWithStudents);
   } catch (error) {

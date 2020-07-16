@@ -11,7 +11,13 @@ export class AllStudents extends React.Component {
   componentDidMount() {
     this.props.getStudents();
   }
+  handleClick(e) {
+    e.preventDefault();
+    // console.log(e.target)
+    this.props.history.push((`/students/${e.target.id}`))
+  }
   render() {
+
     return (
       <div>
         {
@@ -25,7 +31,7 @@ export class AllStudents extends React.Component {
         {this.props.students
           .map((student) => {
             return (
-              <div key={student.id}>
+              <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} >
                 Name: {student.firstName + ' ' + student.lastName}
               </div>
             )

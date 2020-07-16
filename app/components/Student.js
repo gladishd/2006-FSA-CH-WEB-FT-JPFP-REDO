@@ -6,13 +6,18 @@ export class Student extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
-    // let campusId = this.props.match.params.campusId;
-    this.props.getSingleStudent(2);
+    let studentId = this.props.match.params.studentId;
+    this.props.getSingleStudent(studentId);
   }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.history.push((`/campuses/${e.target.id}`))
+  }
+
   render() {
-    // let { address, description, id, imageUrl, name, students } = this.props.currentCampus;
-    console.log(this.props)
     return (
       <div>
         <div className='flex-container'>
@@ -24,6 +29,13 @@ export class Student extends React.Component {
           </div>
           <div>
             {this.props.currentStudent.email}
+          </div>
+          <div>
+            GPA: {this.props.currentStudent.gpa}
+          </div>
+          <div onClick={e => this.handleClick(e)} id={this.props.currentStudent.campusId}>
+            School Name: {this.props.currentStudent.campus && this.props.currentStudent.campus.name}
+            {!this.props.currentStudent.campus && "no school!"}
           </div>
           <img src={this.props.currentStudent.imageUrl} />
         </div>

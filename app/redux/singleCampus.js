@@ -17,7 +17,7 @@ export const fetchSingleCampus = (id) => {
       const { data } = response;
       dispatch(setSpecificCampus(data));
     } catch (error) {
-      next(error);
+      // next(error);
     }
   }
 }

@@ -20,7 +20,7 @@ const Routes = () => {
           <p>With routing, we're able to get all campuses and students!</p>
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/students" component={AllStudents} />
-          <Route exact path="/studentTemporary" component={Student} />
+          <Route exact path="/students/:studentId" component={Student} />
           <Route exact path="/campuses/:campusId" component={Campus} />
         </main>
       </div>

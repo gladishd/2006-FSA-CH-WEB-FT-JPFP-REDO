@@ -50,7 +50,7 @@ export class AllCampuses extends React.Component {
           {this.props.campuses
             .map((campus) => {
               return (
-                <div id={campus.id} onClick={(e) => this.handleClick(e)}>
+                <div id={campus.id} key={campus.id} onClick={(e) => this.handleClick(e)}>
                   Name: {campus.name}
                   <br></br>
                   <img src={campus.imageUrl} />

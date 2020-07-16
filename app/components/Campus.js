@@ -12,10 +12,15 @@ export class Campus extends React.Component {
     this.props.getSingleCampus(campusId);
     // this.props.getSingleStudent(4);
   }
+  handleClick(e) {
+    e.preventDefault();
+    console.log('we got there')
+    this.props.history.push((`/students/${e.target.id}`))
+  }
   render() {
     // console.log(this.props)
     let { address, description, id, imageUrl, name, students } = this.props.currentCampus;
-    // console.log(this.props);
+    // console.log(this.props.currentCampus.students);
     return (
       <div>
         <div className='flex-container'>
@@ -26,10 +31,10 @@ export class Campus extends React.Component {
           {/* don't render students unless they exist
            * (and they don't exist until the component mounts,
            * after the first render). */}
-          <div>Students:
+          <div onClick={e => this.handleClick(e)}>Students:
             {this.props.currentCampus.students && this.props.currentCampus.students
               .map(student => {
-                return <div>
+                return <div id={student.id} key={student.id}>
 
                   Name: {student.firstName} {student.lastName}
                   <br></br>

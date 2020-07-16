@@ -17,7 +17,7 @@ router.get('/:studentId', async (req, res, next) => {
   try {
     const student = await Student.findOne({
       where: { id: req.params.studentId },
-      include: Campus // we want to include the data from the Campus table as well
+      include: [{ model: Campus }] // we want to include the data from the Campus table as well
     });
     res.json(student);
   } catch (error) {
