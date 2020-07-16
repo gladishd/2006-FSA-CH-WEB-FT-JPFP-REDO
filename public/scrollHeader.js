@@ -1,4 +1,4 @@
-const header = document.getElementsByTagName("nav")[0];
+let header = document.getElementsByTagName("nav")[0];
 
 window.addEventListener("scroll", function () {
   const scrollPosition = window.scrollY;
