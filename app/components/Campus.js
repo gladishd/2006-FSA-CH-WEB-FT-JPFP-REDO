@@ -13,9 +13,15 @@ export class Campus extends React.Component {
   }
   render() {
     console.log(this.props)
+    let { address, description, id, imageUrl, name, students } = this.props.currentCampus;
     return (
       <div>
-        the single campus component
+        <div className='flex-container'>
+          <div>Name: {name}</div>
+          <img src={imageUrl} />
+          <div> Address: {address}</div>
+          <div>Description: {description} </div>
+        </div>
       </div>
     )
   }
