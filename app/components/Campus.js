@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleCampus } from '../redux/singleCampus';
+// import { fetchSingleStudent } from '../redux/singleStudent';
 
 export class Campus extends React.Component {
   constructor(props) {
@@ -9,11 +10,12 @@ export class Campus extends React.Component {
   componentDidMount() {
     let campusId = this.props.match.params.campusId;
     this.props.getSingleCampus(campusId);
+    // this.props.getSingleStudent(4);
   }
   render() {
     // console.log(this.props)
     let { address, description, id, imageUrl, name, students } = this.props.currentCampus;
-    console.log(this.props.currentCampus.students);
+    // console.log(this.props);
     return (
       <div>
         <div className='flex-container'>
@@ -51,13 +53,15 @@ export class Campus extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentCampus: state.singleCampus
+    currentCampus: state.singleCampus,
+    // stateInGeneral: state
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getSingleCampus: (id) => { dispatch(fetchSingleCampus(id)) }
+    getSingleCampus: (id) => { dispatch(fetchSingleCampus(id)) },
+    // getSingleStudent: (id) => { dispatch(fetchSingleStudent(id)) }
   }
 }
 

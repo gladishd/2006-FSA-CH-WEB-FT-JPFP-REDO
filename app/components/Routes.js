@@ -5,6 +5,7 @@ import AllCampuses from './AllCampuses' // we need to import the connected compo
 import AllStudents from './AllStudents';
 import Navbar from './Navbar';
 import Campus from './Campus';
+import Student from './Student';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
           <p>With routing, we're able to get all campuses and students!</p>
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/students" component={AllStudents} />
+          <Route exact path="/studentTemporary" component={Student} />
           <Route exact path="/campuses/:campusId" component={Campus} />
         </main>
       </div>

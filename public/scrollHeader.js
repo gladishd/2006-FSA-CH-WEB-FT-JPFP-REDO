@@ -1,5 +1,4 @@
 const header = document.getElementsByTagName("nav")[0];
-console.log(header)
 
 window.addEventListener("scroll", function () {
   const scrollPosition = window.scrollY;
