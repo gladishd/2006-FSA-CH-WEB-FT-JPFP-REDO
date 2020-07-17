@@ -13,6 +13,20 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+/* Even though we defined the axios route for
+ * updating the database, we still need to
+ * make sure the API route it goes to ( the same
+ * as the URL in the browser) actually has a corresponding
+ * post route for adding new stuff to the database. */
+router.post('/', async (req, res, next) => {
+  try {
+    const campus = await Campus.create(req.body);
+    res.json(campus);
+  } catch (error) {
+
+  }
+})
+
 router.get('/:campusIdSlug', async (req, res, next) => {
   try {
     const specificCampusWithStudents = await Campus.findOne({

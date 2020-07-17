@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { postNewCampus } from '../redux/singleCampus';
 
 export class CampusForm extends React.Component {
   constructor(props) {
@@ -20,7 +22,7 @@ export class CampusForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault(); // the default behavior here is to refresh the page
-    console.log(this.state);
+    this.props.postNewCampus(this.state);
   } // we should also call an addStudent method in the Redux store, except we should do it here
 
   render() {
@@ -43,5 +45,15 @@ export class CampusForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  campus: state.singleCampus,
+});
 
-export default CampusForm;
+const mapDispatchToProps = dispatch => ({
+  postNewCampus: campusObj => {
+    dispatch(postNewCampus(campusObj));
+  },
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampusForm);

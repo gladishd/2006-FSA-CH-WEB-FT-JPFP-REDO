@@ -2,10 +2,15 @@ import axios from 'axios';
 
 // action type
 const SET_STUDENT = 'SET_STUDENT';
+const ADD_NEW_STUDENT = 'ADD_NEW_STUDENT';
 
 // action creator
 export const getStudent = (student) => ({
   type: SET_STUDENT,
+  student
+})
+export const addNewStudent = (student) => ({
+  type: ADD_NEW_STUDENT,
   student
 })
 
@@ -21,6 +26,17 @@ export const fetchSingleStudent = (id) => {
     }
   }
 }
+export const postNewStudent = (studentObject) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/api/students', studentObject);
+      const { data } = response;
+      dispatch(addNewStudent(data));
+    } catch (error) {
+
+    }
+  }
+}
 
 let initialState = {};
 
@@ -31,6 +47,8 @@ We're going to be able to */
 export default function singleStudentReducer(state = initialState, action) {
   switch (action.type) {
     case SET_STUDENT:
+      return action.student;
+    case ADD_NEW_STUDENT:
       return action.student;
     default:
       return state;

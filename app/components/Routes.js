@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Campus from './Campus';
 import Student from './Student';
 import CampusForm from './CampusForm'
+import StudentForm from './StudentForm'
 
 const Routes = () => {
   return (
@@ -24,7 +25,8 @@ const Routes = () => {
           <Route exact path="/students" component={AllStudents} />
           <Route exact path="/students/:studentId" component={Student} />
           <Route exact path="/campuses/:campusId" component={Campus} />
-          <Route exact path="/new" component={CampusForm} />
+          <Route exact path="/newCampus" component={CampusForm} />
+          <Route exact path="/newStudent" component={StudentForm} />
         </main>
       </div>
     </Router>

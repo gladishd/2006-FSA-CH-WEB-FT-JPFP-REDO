@@ -25,4 +25,13 @@ router.get('/:studentId', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    const campus = await Student.create(req.body);
+    res.json(campus);
+  } catch (error) {
+
+  }
+})
+
 module.exports = router;
