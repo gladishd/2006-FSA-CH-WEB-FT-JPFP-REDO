@@ -1,6 +1,5 @@
 import React from "react";
-// we need this to connect react to redux
-import { connect } from "react-redux";
+import { connect } from "react-redux"; // we need this to connect react to redux
 import { fetchCampuses } from '../redux/campuses'; // accessing Redux store
 import { removeCampusThunk } from '../redux/singleCampus';
 
@@ -8,30 +7,9 @@ import { removeCampusThunk } from '../redux/singleCampus';
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 
-// this is just a hard-coded version of
-// this.props.campuses, which will be used
-// to get this component to display before
-// the routes are connected, not for the
-// actual test specs, which simulate adding
-// a dynamic campuses array to the props (properties).
-let campuses = [
-  {
-    id: 1,
-    name: "Mars Academy",
-    imageUrl: "/images/mars.png"
-  },
-  {
-    id: 2,
-    name: "Jupiter Jumpstart",
-    imageUrl: "/images/jupiter.jpeg"
-  }
-];
 export class AllCampuses extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      something: false
-    }
+  constructor(props) {
+    super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
   }
@@ -48,11 +26,10 @@ export class AllCampuses extends React.Component {
   handleRemove(campusId) {
     this.props.removeCampus(campusId);
     this.props.getCampuses(); // need to call this again!
-    // this.setState({ something: !this.state.something })
   }
 
   render() {
-    // console.log(this.state) // line 33 will run once when it renders for the first time
+    // line 33 will run once when it renders for the first time
     // componentdidmount gets called after that, and it re-renders
     return (
       <div>
@@ -83,7 +60,6 @@ export class AllCampuses extends React.Component {
 }
 
 const mapState = (state) => {
-  // console.log(state)
   return { campuses: state.campuses };
 };
 

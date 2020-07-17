@@ -18,7 +18,7 @@ export const fetchStudents = () => {
       dispatch(setStudents(data));
     } catch (error) {
       console.error(error)
-      // next(error);
+      next(error);
     }
   }
 };

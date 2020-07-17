@@ -9,7 +9,6 @@ router.get('/', async (req, res, next) => {
     res.json(studentData);
   } catch (error) {
     console.error(error)
-    next(error);
   }
 });
 
@@ -21,7 +20,7 @@ router.get('/:studentId', async (req, res, next) => {
     });
     res.json(student);
   } catch (error) {
-    next(error);
+    console.error(error)
   }
 })
 
@@ -30,6 +29,7 @@ router.post('/', async (req, res, next) => {
     const campus = await Student.create(req.body);
     res.json(campus);
   } catch (error) {
+    console.error(error)
   }
 })
 
@@ -38,8 +38,19 @@ router.delete('/:studentId', async (req, res, next) => {
     await Student.destroy({ where: { id: req.params.studentId } });
     res.status(204).send();
   } catch (error) {
-    next(error)
+    console.error(error)
   }
 })
+
+router.put('/:studentId', async (req, res, next) => {
+  try {
+    const studentId = req.params.studentId;
+    const student = await Student.findByPk(studentId, { include: Campus });
+    await student.update(req.body);
+    res.json(student);
+  } catch (error) {
+    console.error(error)
+  }
+});
 
 module.exports = router;

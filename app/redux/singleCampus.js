@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-// action type
+// action types
 const SET_SPECIFIC_CAMPUS = 'SET_SPECIFIC_CAMPUS';
 const ADD_NEW_CAMPUS = 'ADD_NEW_CAMPUS';
 const REMOVE_CAMPUS = 'REMOVE_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 
-// action creator
+// action creators
 export const setSpecificCampus = (campus) => ({
   type: SET_SPECIFIC_CAMPUS,
   campus
@@ -18,8 +20,13 @@ export const removeCampus = (campusId) => ({
   type: REMOVE_CAMPUS,
   campusId
 })
+export const updateCampus = (campusId, updatedCampus) => ({
+  type: UPDATE_CAMPUS,
+  campusId,
+  updatedCampus
+})
 
-// thunk creator
+// thunk creators
 export const fetchSingleCampus = (id) => {
   return async (dispatch) => {
     try {
@@ -27,7 +34,7 @@ export const fetchSingleCampus = (id) => {
       const { data } = response;
       dispatch(setSpecificCampus(data));
     } catch (error) {
-      // next(error);
+      next(error);
     }
   }
 }
@@ -41,6 +48,7 @@ export const postNewCampus = (campusObject) => {
       // and it's notifying the server.
       dispatch(addNewCampus(data));
     } catch (error) {
+      next(error)
     }
   }
 }
@@ -49,9 +57,19 @@ export const removeCampusThunk = (campusId) => {
     try {
       await axios.delete(`/api/campuses/${campusId}`);
       dispatch(removeCampus(campusId));
-      console.log('you clicked the x')
     } catch (error) {
-
+      next(error)
+    }
+  }
+}
+export const updateCampusThunk = (updatedCampus) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(`/api/campuses/${updatedCampus.id}`, updatedCampus)
+      const { data } = response;
+      dispatch(updateCampus(data));
+    } catch (error) {
+      next(error)
     }
   }
 }
@@ -66,6 +84,14 @@ export default function singleCampusReducer(state = initialState, action) {
       return action.campus;
     case REMOVE_CAMPUS:
       return action.campusId;
+    case UPDATE_CAMPUS:
+      return action.updatedCampus;
+    case UPDATE_STUDENT:
+      const indexOfCurrentStudent = state.students.findIndex(element => element.id === action.updatedStudent.id);
+      return {
+        ...state.students[indexOfCurrentStudent],
+        ...action.updatedStudent
+      };
     default:
       return state;
   }

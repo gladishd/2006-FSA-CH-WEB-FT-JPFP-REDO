@@ -14,7 +14,6 @@ export class AllStudents extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
-    // console.log(e.target)
     this.props.history.push((`/students/${e.target.id}`))
   }
   handleRemove(studentId) {

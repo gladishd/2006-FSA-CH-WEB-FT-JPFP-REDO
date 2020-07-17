@@ -18,26 +18,19 @@ export class Student extends React.Component {
   }
 
   render() {
+    const { firstName, lastName, email, gpa, campusId, campus, imageUrl } = this.props.currentStudent;
     return (
       <div>
         <div className='flex-container'>
-          <div>
-            {this.props.currentStudent.firstName}
+          <div> {firstName} </div>
+          <div> {lastName} </div>
+          <div> {email} </div>
+          <div> GPA: {gpa} </div>
+          <div onClick={e => this.handleClick(e)} id={campusId}>
+            Campus: {campus && campus.name}
+            {!campus && "The student is not associated with any campus!"}
           </div>
-          <div>
-            {this.props.currentStudent.lastName}
-          </div>
-          <div>
-            {this.props.currentStudent.email}
-          </div>
-          <div>
-            GPA: {this.props.currentStudent.gpa}
-          </div>
-          <div onClick={e => this.handleClick(e)} id={this.props.currentStudent.campusId}>
-            School Name: {this.props.currentStudent.campus && this.props.currentStudent.campus.name}
-            {!this.props.currentStudent.campus && "no school!"}
-          </div>
-          <img src={this.props.currentStudent.imageUrl} />
+          <img src={imageUrl} />
         </div>
       </div>
     )

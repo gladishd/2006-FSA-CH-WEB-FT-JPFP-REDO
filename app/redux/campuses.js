@@ -17,10 +17,8 @@ export const fetchCampuses = () => {
       const { data } = response;
       /* because the response has
        * status, data, headers and config */
-      // console.log('the response is, ', response)
       dispatch(setCampuses(data));
     } catch (error) {
-      // next(error);
       console.error(error);
     }
   }

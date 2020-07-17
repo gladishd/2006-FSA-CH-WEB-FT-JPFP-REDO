@@ -6,13 +6,12 @@ export class StudentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      firstName: '',
+      lastName: '',
+      email: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
   }
 
   handleChange(e) {
@@ -27,22 +26,19 @@ export class StudentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mb-3">
         <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="name">First Name: </label>
-          <input name="firstName" type="text" onChange={e => this.handleChange(e)} />
+          <input name="firstName" onChange={e => this.handleChange(e)} />
           <br></br>
           <label htmlFor="address">Last Name: </label>
-          <input name="lastName" type="text" onChange={e => this.handleChange(e)} />
+          <input name="lastName" onChange={e => this.handleChange(e)} />
           <br></br>
-          <label htmlFor="email">Last Name: </label>
-          <input name="email" type="text" onChange={e => this.handleChange(e)} />
+          <label htmlFor="email">Email: </label>
+          <input name="email" onChange={e => this.handleChange(e)} />
           <br></br>
-          <button type="submit">
-            Submit!
-          </button>
+          <button type="submit">Submit!</button>
         </form>
-
       </div>
     )
   }
