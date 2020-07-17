@@ -30,7 +30,15 @@ router.post('/', async (req, res, next) => {
     const campus = await Student.create(req.body);
     res.json(campus);
   } catch (error) {
+  }
+})
 
+router.delete('/:studentId', async (req, res, next) => {
+  try {
+    await Student.destroy({ where: { id: req.params.studentId } });
+    res.status(204).send();
+  } catch (error) {
+    next(error)
   }
 })
 

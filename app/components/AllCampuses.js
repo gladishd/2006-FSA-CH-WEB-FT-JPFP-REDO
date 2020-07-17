@@ -1,7 +1,8 @@
 import React from "react";
 // we need this to connect react to redux
 import { connect } from "react-redux";
-import { fetchCampuses } from '../redux/campuses';
+import { fetchCampuses } from '../redux/campuses'; // accessing Redux store
+import { removeCampusThunk } from '../redux/singleCampus';
 
 // Notice that we're exporting the AllCampuses component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -26,13 +27,28 @@ let campuses = [
   }
 ];
 export class AllCampuses extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      something: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
   componentDidMount() {
     this.props.getCampuses();
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.props.history.push((`/campuses/${e.target.id}`))
+    this.props.history.push(`/campuses/${e.target.id}`)
+  }
+
+  handleRemove(campusId) {
+    this.props.removeCampus(campusId);
+    this.props.getCampuses(); // need to call this again!
+    // this.setState({ something: !this.state.something })
   }
 
   render() {
@@ -55,11 +71,13 @@ export class AllCampuses extends React.Component {
                   <br></br>
                   <img src={campus.imageUrl} />
                   <div></div>
+                  <button type="button" onClick={() => this.handleRemove(campus.id)}> X </button>
                 </div>
               )
-            })}
+            })
+          }
         </div>
-      </div>
+      </div >
     )
   }
 }
@@ -71,7 +89,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getCampuses: () => { dispatch(fetchCampuses()) } // every time a state changes, it triggers a re-render
+    getCampuses: () => { dispatch(fetchCampuses()) }, // every time a state changes, it triggers a re-render
+    removeCampus: (id) => { dispatch(removeCampusThunk(id)) }
   };
 };
 

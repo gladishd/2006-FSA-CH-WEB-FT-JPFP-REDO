@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchStudents } from '../redux/students';
 // import fetchStudents thunk from the students.js file, which then makes an API request.
+import { removeStudentThunk } from '../redux/singleStudent';
 
 
 // Notice that we're exporting the AllStudents component twice. The named export
@@ -16,8 +17,11 @@ export class AllStudents extends React.Component {
     // console.log(e.target)
     this.props.history.push((`/students/${e.target.id}`))
   }
+  handleRemove(studentId) {
+    this.props.removeStudent(studentId);
+    this.props.getStudents();
+  }
   render() {
-
     return (
       <div>
         {
@@ -26,13 +30,14 @@ export class AllStudents extends React.Component {
               'No Students' : 'Students:'}
           </div>
         }
-
-
         {this.props.students
           .map((student) => {
             return (
-              <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} >
-                Name: {student.firstName + ' ' + student.lastName}
+              <div>
+                <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} >
+                  Name: {student.firstName + ' ' + student.lastName}
+                </div>
+                <button type="button" onClick={() => this.handleRemove(student.id)}> X </button>
               </div>
             )
           })}
@@ -47,7 +52,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getStudents: () => { dispatch(fetchStudents()) }
+    getStudents: () => { dispatch(fetchStudents()) },
+    removeStudent: (id) => { dispatch(removeStudentThunk(id)) }
   };
 };
 

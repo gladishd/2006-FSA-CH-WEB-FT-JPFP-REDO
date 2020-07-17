@@ -3,6 +3,7 @@ import axios from 'axios';
 // action type
 const SET_SPECIFIC_CAMPUS = 'SET_SPECIFIC_CAMPUS';
 const ADD_NEW_CAMPUS = 'ADD_NEW_CAMPUS';
+const REMOVE_CAMPUS = 'REMOVE_CAMPUS';
 
 // action creator
 export const setSpecificCampus = (campus) => ({
@@ -12,6 +13,10 @@ export const setSpecificCampus = (campus) => ({
 export const addNewCampus = (campus) => ({
   type: ADD_NEW_CAMPUS,
   campus
+})
+export const removeCampus = (campusId) => ({
+  type: REMOVE_CAMPUS,
+  campusId
 })
 
 // thunk creator
@@ -39,6 +44,17 @@ export const postNewCampus = (campusObject) => {
     }
   }
 }
+export const removeCampusThunk = (campusId) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/api/campuses/${campusId}`);
+      dispatch(removeCampus(campusId));
+      console.log('you clicked the x')
+    } catch (error) {
+
+    }
+  }
+}
 
 let initialState = {};
 
@@ -48,6 +64,8 @@ export default function singleCampusReducer(state = initialState, action) {
       return action.campus;
     case ADD_NEW_CAMPUS:
       return action.campus;
+    case REMOVE_CAMPUS:
+      return action.campusId;
     default:
       return state;
   }

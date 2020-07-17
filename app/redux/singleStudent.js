@@ -3,6 +3,7 @@ import axios from 'axios';
 // action type
 const SET_STUDENT = 'SET_STUDENT';
 const ADD_NEW_STUDENT = 'ADD_NEW_STUDENT';
+const REMOVE_STUDENT = 'REMOVE_STUDENT';
 
 // action creator
 export const getStudent = (student) => ({
@@ -12,6 +13,10 @@ export const getStudent = (student) => ({
 export const addNewStudent = (student) => ({
   type: ADD_NEW_STUDENT,
   student
+})
+export const removeStudent = (studentId) => ({
+  type: REMOVE_STUDENT,
+  studentId
 })
 
 // thunk creator
@@ -32,6 +37,17 @@ export const postNewStudent = (studentObject) => {
       const response = await axios.post('/api/students', studentObject);
       const { data } = response;
       dispatch(addNewStudent(data));
+    } catch (error) {
+
+    }
+  }
+}
+export const removeStudentThunk = (studentId) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/api/students/${studentId}`);
+      dispatch(removeCampus(studentId));
+      console.log('you clicked the x')
     } catch (error) {
 
     }

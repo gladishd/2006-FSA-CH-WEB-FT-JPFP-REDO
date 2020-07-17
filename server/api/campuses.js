@@ -39,4 +39,13 @@ router.get('/:campusIdSlug', async (req, res, next) => {
   }
 })
 
+router.delete('/:campusId', async (req, res, next) => {
+  try {
+    await Campus.destroy({ where: { id: req.params.campusId } });
+    res.status(204).send();
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router;
