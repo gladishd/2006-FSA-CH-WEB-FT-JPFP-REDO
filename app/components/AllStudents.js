@@ -23,23 +23,32 @@ export class AllStudents extends React.Component {
   render() {
     return (
       <div>
-        {
-          <div>
-            {this.props.students[0] === undefined ?
-              'No Students' : 'Students:'}
-          </div>
-        }
-        {this.props.students
-          .map((student) => {
-            return (
-              <div>
-                <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} >
-                  Name: {student.firstName + ' ' + student.lastName}
+        <div className='title'>
+          {
+            this.props.students[0] === undefined ?
+              'No Students' : 'Students:'
+          }
+        </div>
+        <div className='flex-container'>
+          {this.props.students
+            .map((student) => {
+              return (
+                <div>
+                  <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} className='title'>
+                    <br></br>
+                    Name: {student.firstName + ' ' + student.lastName}
+                    <br></br>
+                    <br></br>
+                    {/* need to have id on the image so that we can click on it. */}
+                    <img id={student.id} src={student.imageUrl} />
+                    <br></br>
+                    <br></br>
+                  </div>
+                  <button type="button" onClick={() => this.handleRemove(student.id)}> X </button>
                 </div>
-                <button type="button" onClick={() => this.handleRemove(student.id)}> X </button>
-              </div>
-            )
-          })}
+              )
+            })}
+        </div>
       </div>
     )
   }

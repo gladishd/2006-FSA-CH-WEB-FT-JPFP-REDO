@@ -68,11 +68,13 @@ export class Student extends React.Component {
     const { firstName, lastName, email, gpa, campusId, campus, imageUrl } = this.props.currentStudent;
     return (
       <div>
-        <div className='flex-container'>
-          <div> {firstName} </div>
-          <div> {lastName} </div>
-          <div> {email} </div>
+        <div>
+          <div> {firstName} {lastName} </div>
+          <br></br>
+          <div style={{ 'font-style': 'italic' }}> {email} </div>
+          <br></br>
           <div> GPA: {gpa} </div>
+          <br></br>
           <div onClick={e => this.handleClick(e)} id={campusId}>
             Campus: {campus && campus.name}
             {!campus && "The student is not associated with any campus!"}

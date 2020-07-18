@@ -74,30 +74,33 @@ export class Campus extends React.Component {
     const { address, description, imageUrl, name, students } = this.props.currentCampus;
     return (
       <div>
-        <div className='flex-container'>
-          <div>Name: {name} </div>
+        <div>
+          <div style={{ 'font-weight': 'bold' }}> {name} </div>
+          <br></br>
           <img src={imageUrl} />
+          <br></br>
           <div>Address: {address} </div>
+          <br></br>
           <div>Description: {description} </div>
+          <br></br>
           {/* don't render students unless they exist
            * (and they don't exist until the component mounts,
            * after the first render). */}
-          <div>Students:
+          <div style={{ 'font-weight': 'bold' }}>Students: </div>
+          <div>
             {
               students &&
               students
                 .map(student => {
                   return <div>
                     <div id={student.id} key={student.id} onClick={e => this.getStudent(e)}>
-                      Name: {student.firstName} {student.lastName}
+                      <i>Name:</i> {student.firstName} {student.lastName}
                       <br></br>
-                      Email: {student.email}
+                      <i>Email: {student.email} </i>
                       <br></br>
-                      GPA: {student.gpa}
+                      <i>GPA:</i> {student.gpa}
                       <br></br>
                       <img src={student.imageUrl} />
-                    </div>
-                    <div>
                       <button onClick={(e) => { this.unregisterStudent(e, student.id); }}>
                         Unregister
                       </button>
@@ -111,6 +114,7 @@ export class Campus extends React.Component {
               ' No Students!'
             }
           </div>
+          <br></br>
           <button onClick={this.showUpdateForm}>
             Update Campus
             </button>
@@ -125,6 +129,9 @@ export class Campus extends React.Component {
               /> : ''
           }
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     )
   }

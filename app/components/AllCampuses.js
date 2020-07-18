@@ -34,7 +34,7 @@ export class AllCampuses extends React.Component {
     return (
       <div>
         {
-          <div>
+          <div className='title'>
             {this.props.campuses[0] === undefined ?
               'No Campuses' : 'Campuses:'}
           </div>
@@ -43,11 +43,14 @@ export class AllCampuses extends React.Component {
           {this.props.campuses
             .map((campus) => {
               return (
-                <div id={campus.id} key={campus.id} onClick={(e) => this.handleClick(e)}>
-                  Name: {campus.name}
+                <div id={campus.id} key={campus.id} onClick={(e) => this.handleClick(e)} className='title'>
                   <br></br>
-                  <img src={campus.imageUrl} />
-                  <div></div>
+                  {campus.name}
+                  <br></br>
+                  <br></br>
+                  <img id={campus.id} src={campus.imageUrl} className='image' />
+                  <br></br>
+                  <br></br>
                   <button type="button" onClick={() => this.handleRemove(campus.id)}> X </button>
                 </div>
               )
