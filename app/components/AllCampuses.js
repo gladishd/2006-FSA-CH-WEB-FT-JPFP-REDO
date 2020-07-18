@@ -34,7 +34,7 @@ export class AllCampuses extends React.Component {
     return (
       <div>
         {
-          <div className='title'>
+          <div className='titleLeftAlign'>
             {this.props.campuses[0] === undefined ?
               'No Campuses' : 'Campuses:'}
           </div>
@@ -43,7 +43,7 @@ export class AllCampuses extends React.Component {
           {this.props.campuses
             .map((campus) => {
               return (
-                <div id={campus.id} key={campus.id} onClick={(e) => this.handleClick(e)} className='title'>
+                <div id={campus.id} key={campus.id} onClick={(e) => this.handleClick(e)} className='titleLeftAlign'>
                   <br></br>
                   {campus.name}
                   <br></br>

@@ -17,7 +17,7 @@ const Routes = () => {
           <Navbar />
         </nav>
         <main>
-          <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
+          <h1 style={{ 'font-family': 'georgia, serif' }}>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
           <Route exact path="/" component={Main} />
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/students" component={AllStudents} />

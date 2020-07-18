@@ -19,7 +19,7 @@ body {
 
 nav {
   align-items: center;
-  background-color: #c5b1c3;
+  background-color: #ffffff;
   color: #c0c0c0;
   display: flex;
   height: 3em;
@@ -79,7 +79,10 @@ img {
   background: radial-gradient(#ffffff, #ffffff2d);
   flex-wrap: wrap;
   align-content: center;
+  /* this seems to override setting titleLeftAlign as the classname on a div within flex-container */
   margin: 9vw;
+  margin-top: 1vh;
+  /* we want to set the margin-top to override the default, which is 9vw all around */
 }
 
 .flex-container > div {
@@ -120,6 +123,11 @@ form {
 .title {
   font-weight: bold;
   text-align: center;
+}
+.titleLeftAlign {
+  font-weight: bold;
+  text-align: left;
+  margin-left: 10vw;
 }
 
 .image {

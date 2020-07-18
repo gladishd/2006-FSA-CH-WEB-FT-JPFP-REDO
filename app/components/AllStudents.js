@@ -23,7 +23,7 @@ export class AllStudents extends React.Component {
   render() {
     return (
       <div>
-        <div className='title'>
+        <div className='titleLeftAlign'>
           {
             this.props.students[0] === undefined ?
               'No Students' : 'Students:'
