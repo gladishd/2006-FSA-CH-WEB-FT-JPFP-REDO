@@ -74,7 +74,7 @@ export class Campus extends React.Component {
     const { address, description, imageUrl, name, students } = this.props.currentCampus;
     return (
       <div>
-        <div>
+        <div className='singleCampus'>
           <div style={{ 'font-weight': 'bold' }}> {name} </div>
           <br></br>
           <img src={imageUrl} />
@@ -87,6 +87,7 @@ export class Campus extends React.Component {
            * (and they don't exist until the component mounts,
            * after the first render). */}
           <div style={{ 'font-weight': 'bold' }}>Students: </div>
+          <br></br>
           <div>
             {
               students &&
@@ -94,16 +95,19 @@ export class Campus extends React.Component {
                 .map(student => {
                   return <div>
                     <div id={student.id} key={student.id} onClick={e => this.getStudent(e)}>
-                      <i>Name:</i> {student.firstName} {student.lastName}
+                      Name: <i> {student.firstName} {student.lastName} </i>
                       <br></br>
-                      <i>Email: {student.email} </i>
+                      Email: <i>{student.email} </i>
                       <br></br>
-                      <i>GPA:</i> {student.gpa}
+                      GPA: {student.gpa}
                       <br></br>
                       <img src={student.imageUrl} />
                       <button onClick={(e) => { this.unregisterStudent(e, student.id); }}>
                         Unregister
                       </button>
+                      <br></br>
+                      <br></br>
+                      <br></br>
                     </div>
                   </div>
                 })

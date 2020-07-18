@@ -133,3 +133,8 @@ form {
 .image {
   border-style: ridge;
 }
+
+.singleCampus {
+  max-width: 20vw;
+  word-wrap: break-word;
+}
