@@ -28,7 +28,7 @@ const Student = db.define(
     },
     imageUrl: {
       type: Sequelize.STRING,
-      defaultValue: 'https://www.irvingisd.net/cms/lib/TX01917973/Centricity/Domain/6667/StudentPageIcons_Artboard%205%20copy%204.png'
+      defaultValue: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Student_icon.svg'
     },
     gpa: {
       type: Sequelize.FLOAT,

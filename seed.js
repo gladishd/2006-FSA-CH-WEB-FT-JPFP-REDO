@@ -112,7 +112,7 @@ const studentsToPopulate = [
   {
     firstName: "Dean",
     lastName: "Gladish",
-    email: "dean.gladish@mail.com",
+    email: "gladish.dean@gmail.com",
     gpa: 1.5,
     campusId: 3
   },
