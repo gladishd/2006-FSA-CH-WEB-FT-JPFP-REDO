@@ -94,10 +94,24 @@ img {
 
 button {
   text-align: right;
-  background-color: rgba(83, 146, 88, 0.425);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 form {
   text-align: right;
-  background-color: rgba(55, 158, 255, 0.459);
+  padding-right: 7vw;
+  padding-left: 3vw;
+}
+
+.addForm {
+  text-shadow: 2px 2px #32005a42;
+  font-weight: bold;
+  font-family: georgia, serif;
+  border-top-left-radius: 3rem;
+  border-top-style: ridge;
+  border-left-style: inset;
+  border-right-style: outset;
+  border-bottom-style: dotted;
+
 }

@@ -7,13 +7,12 @@ export class CampusForm extends React.Component {
     super(props);
     this.state = {
       name: '',
-      address: ''
+      imageUrl: '',
+      address: '',
+      description: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
   }
 
   handleChange(e) { // the default behavior isn't to refresh the page, but we should still prevent default.
@@ -30,14 +29,20 @@ export class CampusForm extends React.Component {
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label htmlFor="name">Name: </label>
-          <input name="name" type="text" onChange={e => this.handleChange(e)} />
+          <label htmlFor="name">Campus Name: </label>
+          <textarea name="name" onChange={e => this.handleChange(e)} />
           <br></br>
           <label htmlFor="address">Address: </label>
-          <input name="address" type="text" onChange={e => this.handleChange(e)} />
+          <textarea name="address" onChange={e => this.handleChange(e)} />
+          <br></br>
+          <label htmlFor="description">Description: </label>
+          <textarea name="description" onChange={e => this.handleChange(e)} />
+          <br></br>
+          <label htmlFor="imageUrl">Image URL: </label>
+          <textarea name="imageUrl" onChange={e => this.handleChange(e)} />
           <br></br>
           <button type="submit">
-            Submit!
+            Submit
           </button>
         </form>
 

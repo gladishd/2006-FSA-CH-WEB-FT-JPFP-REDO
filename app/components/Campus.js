@@ -33,7 +33,6 @@ export class Campus extends React.Component {
     e.preventDefault();
     const { currentCampus } = this.props;
     this.setState({
-      id: currentCampus.id,
       name: currentCampus.name,
       address: currentCampus.address,
       description: currentCampus.description,
@@ -112,7 +111,7 @@ export class Campus extends React.Component {
               ' No Students!'
             }
           </div>
-          <button type="button" onClick={this.showUpdateForm}>
+          <button onClick={this.showUpdateForm}>
             Update Campus
             </button>
           {

@@ -8,7 +8,9 @@ export class StudentForm extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      imageUrl: '',
+      gpa: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,16 +28,23 @@ export class StudentForm extends React.Component {
 
   render() {
     return (
-      <div className="mb-3">
+      <div>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label htmlFor="name">First Name: </label>
-          <input name="firstName" onChange={e => this.handleChange(e)} />
+          <label htmlFor="firstName">First Name: </label>
+          {/* the htmlFor id matches */}
+          <textarea name="firstName" onChange={e => this.handleChange(e)} />
           <br></br>
-          <label htmlFor="address">Last Name: </label>
-          <input name="lastName" onChange={e => this.handleChange(e)} />
+          <label htmlFor="lastName">Last Name: </label>
+          <textarea name="lastName" onChange={e => this.handleChange(e)} />
           <br></br>
           <label htmlFor="email">Email: </label>
-          <input name="email" onChange={e => this.handleChange(e)} />
+          <textarea name="email" onChange={e => this.handleChange(e)} />
+          <br></br>
+          <label htmlFor="imageUrl" >Image URL: </label>
+          <textarea name="imageUrl" onChange={e => this.handleChange(e)} />
+          <br></br>
+          <label htmlFor="gpa">GPA: </label>
+          <textarea name="gpa" onChange={e => this.handleChange(e)} />
           <br></br>
           <button type="submit">Submit!</button>
         </form>

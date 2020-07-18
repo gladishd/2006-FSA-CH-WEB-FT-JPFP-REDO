@@ -6,7 +6,7 @@ export default class CampusUpdateForm extends React.Component {
   }
   render() {
     return (
-      <div className="mb-3">
+      <div className=".addForm">
         <form onSubmit={this.props.handleSubmit}>
           <label htmlFor="name">Name: </label>
           <textarea name="name" value={this.props.name} onChange={this.props.mapInputToState} />
