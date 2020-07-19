@@ -1,6 +1,5 @@
 const router = require('express').Router();
-// import the Campus Sequelize model:
-const Campus = require('../db/campus');
+const Campus = require('../db/campus'); // import the Campus Sequelize model
 const Student = require('../db/student');
 
 router.get('/', async (req, res, next) => {

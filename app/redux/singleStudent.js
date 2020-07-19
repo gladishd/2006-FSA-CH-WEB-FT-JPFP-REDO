@@ -33,7 +33,7 @@ export const fetchSingleStudent = (id) => {
       const { data } = response;
       dispatch(getStudent(data));
     } catch (error) {
-      next(error);
+      console.error(error);
     }
   }
 }
@@ -44,7 +44,7 @@ export const postNewStudent = (studentObject) => {
       const { data } = response;
       dispatch(addNewStudent(data));
     } catch (error) {
-      console.log('did an error happen')
+      console.error(error);
     }
   }
 }
@@ -54,7 +54,7 @@ export const removeStudentThunk = (studentId) => {
       await axios.delete(`/api/students/${studentId}`);
       dispatch(removeCampus(studentId));
     } catch (error) {
-      next(error);
+      console.error(error);
     }
   }
 }
@@ -65,7 +65,7 @@ export const updateStudentThunk = (studentId, updatedKeys) => {
       const { data } = response;
       dispatch(updateStudent(studentId, data));
     } catch (error) {
-      next(error);
+      console.error(error)
     }
   }
 }

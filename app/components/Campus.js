@@ -55,8 +55,7 @@ export class Campus extends React.Component {
       address: address
     });
     this.setState({ showForm: false });
-    let campusId = this.props.match.params.campusId;
-    this.props.getSingleCampus(campusId);
+    this.props.getSingleCampus(this.state.campusId);
   }
 
   async unregisterStudent(e, studentId) {
@@ -65,7 +64,7 @@ export class Campus extends React.Component {
     // order is important!  we don't want to
     // re-retrieve the students before they've been unregistered, or we'll get blank text for our values.
     // not only that, but we're awaiting a RESPONSE.
-    setTimeout(() => this.props.getSingleCampus(this.props.match.params.campusId), 100)
+    setTimeout(() => this.props.getSingleCampus(this.state.campusId), 100)
     // this should just trigger the SET (get) _SPECIFIC_CAMPUS action,
     // in order that the page refreshes properly so that we don't have to reload the page.
   }
@@ -104,21 +103,23 @@ export class Campus extends React.Component {
               students
                 .map(student => {
                   return <div key={student.id}>
-                    <div id={student.id} onClick={e => this.getStudent(e)}>
-                      Name: <i> {student.firstName} {student.lastName} </i>
-                      <br></br>
+                    <div>
+                      <div id={student.id} onClick={e => this.getStudent(e)}>
+                        Name: <i> {student.firstName} {student.lastName} </i>
+                        <br></br>
                       Email: <i>{student.email} </i>
-                      <br></br>
+                        <br></br>
                       GPA: {student.gpa}
-                      <br></br>
-                      <img src={student.imageUrl} />
-                      <button onClick={(e) => { this.unregisterStudent(e, student.id); }}>
-                        Unregister
-                      </button>
-                      <br></br>
-                      <br></br>
-                      <br></br>
+                        <br></br>
+                        <img src={student.imageUrl} id={student.id} />
+                      </div>
                     </div>
+                    <button onClick={(e) => { this.unregisterStudent(e, student.id); }}>
+                      Unregister
+                      </button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
                   </div>
                 })
             }

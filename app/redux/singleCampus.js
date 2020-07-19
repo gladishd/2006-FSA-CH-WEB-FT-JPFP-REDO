@@ -34,7 +34,7 @@ export const fetchSingleCampus = (id) => {
       const { data } = response;
       dispatch(setSpecificCampus(data));
     } catch (error) {
-      next(error);
+      console.error(error);
     }
   }
 }
@@ -48,7 +48,7 @@ export const postNewCampus = (campusObject) => {
       // and it's notifying the server.
       dispatch(addNewCampus(data));
     } catch (error) {
-      next(error)
+      console.error(error);
     }
   }
 }
@@ -58,7 +58,7 @@ export const removeCampusThunk = (campusId) => {
       await axios.delete(`/api/campuses/${campusId}`);
       dispatch(removeCampus(campusId));
     } catch (error) {
-      next(error)
+      console.error(error);
     }
   }
 }
@@ -69,7 +69,7 @@ export const updateCampusThunk = (updatedCampus) => {
       const { data } = response;
       dispatch(updateCampus(data));
     } catch (error) {
-      next(error)
+      console.error(error);
     }
   }
 }

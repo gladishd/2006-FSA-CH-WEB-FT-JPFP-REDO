@@ -1,4 +1,4 @@
-import axios from 'axios'; // imports
+import axios from 'axios';
 
 // action type
 const SET_STUDENTS = 'SET_STUDENTS';

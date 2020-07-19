@@ -22,21 +22,13 @@ export class Student extends React.Component {
   }
 
   componentDidMount() {
-    let studentId = this.props.match.params.studentId;
-    this.props.getSingleStudent(studentId);
+    this.props.getSingleStudent(this.state.studentId);
   }
 
   showUpdateForm(e) {
     e.preventDefault();
-    const { currentStudent } = this.props;
-    this.setState({
-      firstName: currentStudent.firstName,
-      lastName: currentStudent.lastName,
-      email: currentStudent.email,
-      imageUrl: currentStudent.imageUrl,
-      gpa: currentStudent.gpa,
-      showForm: !this.state.showForm,
-    });
+    const { firstName, lastName, email, imageUrl, gpa } = this.props.currentStudent;
+    this.setState({ firstName, lastName, email, imageUrl, gpa, showForm: !this.state.showForm });
     this.props.getSingleStudent(this.state.campusId);
   }
 
@@ -47,16 +39,9 @@ export class Student extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
-    this.props.updateStudent(Number(this.state.studentId), {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      imageUrl: imageUrl,
-      gpa: gpa
-    });
+    this.props.updateStudent(Number(this.state.studentId), { firstName, lastName, email, imageUrl, gpa });
     this.setState({ showForm: false });
-    let studentId = this.props.match.params.studentId;
-    this.props.getSingleStudent(studentId);
+    this.props.getSingleStudent(this.state.studentId);
   }
 
   handleClick(e) {

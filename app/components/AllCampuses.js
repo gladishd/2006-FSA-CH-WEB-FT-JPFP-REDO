@@ -29,8 +29,8 @@ export class AllCampuses extends React.Component {
   }
 
   render() {
-    // line 33 will run once when it renders for the first time
-    // componentdidmount gets called after that, and it re-renders
+    /* line 34 will run once when it renders for the first time
+     * componentdidmount gets called after that, and it re-renders */
     return (
       <div>
         {

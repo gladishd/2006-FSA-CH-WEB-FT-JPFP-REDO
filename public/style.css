@@ -142,3 +142,11 @@ form {
 .addFormWithMargin {
   margin-top: 15vh;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: white;
+  text-align: left;
+}
