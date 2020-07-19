@@ -1,3 +1,6 @@
+https://youtu.be/si04cLEFEjI
+https://gentle-hamlet-62265.herokuapp.com/
+
 # Junior Phase Final Project
 
 ## Getting started
