@@ -19,6 +19,7 @@ console.log(chalk.yellow(`Opening database connection to ${dbName}`))
 // })
 
 const databaseUrl = process.env.DATABASE_URL || `postgres://localhost:5432/${dbName}`
+console.log('the database URL is, ', databaseUrl)
 const db = new Sequelize(
   databaseUrl,
   {
