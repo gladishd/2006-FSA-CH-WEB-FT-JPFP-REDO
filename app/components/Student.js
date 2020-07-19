@@ -65,13 +65,20 @@ export class Student extends React.Component {
   }
 
   render() {
+    if (!this.props.currentStudent) {
+      return (
+        <h1>
+          Student not found!
+        </h1>
+      )
+    }
     const { firstName, lastName, email, gpa, campusId, campus, imageUrl } = this.props.currentStudent;
     return (
       <div>
         <div>
           <div> {firstName} {lastName} </div>
           <br></br>
-          <div style={{ 'font-style': 'italic' }}> {email} </div>
+          <div style={{ 'fontStyle': 'italic' }}> {email} </div>
           <br></br>
           <div> GPA: {gpa} </div>
           <br></br>

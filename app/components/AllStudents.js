@@ -33,8 +33,8 @@ export class AllStudents extends React.Component {
           {this.props.students
             .map((student) => {
               return (
-                <div>
-                  <div id={student.id} key={student.id} onClick={e => this.handleClick(e)} className='title'>
+                <div key={student.id}>
+                  <div id={student.id} onClick={e => this.handleClick(e)} className='title'>
                     <br></br>
                     Name: {student.firstName + ' ' + student.lastName}
                     <br></br>

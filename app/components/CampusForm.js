@@ -27,7 +27,7 @@ export class CampusForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='addFormWithMargin'>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="name">
             {this.state.name === '' ? <span style={{ 'color': 'red' }}>*required field </span> : <span></span>}

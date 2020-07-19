@@ -34,7 +34,7 @@ export class StudentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='addFormWithMargin'>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="firstName">
             First Name:

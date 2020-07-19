@@ -80,7 +80,7 @@ img {
   flex-wrap: wrap;
   align-content: center;
   /* this seems to override setting titleLeftAlign as the classname on a div within flex-container */
-  margin: 9vw;
+  margin: 28.5vh;
   margin-top: 1vh;
   /* we want to set the margin-top to override the default, which is 9vw all around */
 }
@@ -127,7 +127,7 @@ form {
 .titleLeftAlign {
   font-weight: bold;
   text-align: left;
-  margin-left: 10vw;
+  margin-left: 15vw;
 }
 
 .image {
@@ -137,4 +137,8 @@ form {
 .singleCampus {
   max-width: 20vw;
   word-wrap: break-word;
+}
+
+.addFormWithMargin {
+  margin-top: 15vh;
 }

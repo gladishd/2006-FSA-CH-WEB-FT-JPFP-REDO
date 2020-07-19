@@ -2,9 +2,9 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div>
+    <h1>
       Component Not Found!
-    </div>
+    </h1>
   )
 }
 

@@ -71,11 +71,21 @@ export class Campus extends React.Component {
   }
 
   render() {
+    /* If we try to access an invalid campus id, for instance http://localhost:1337/campuses/234,
+     * then that campus id will not be retrieved and so currentCampus is null */
+    if (!this.props.currentCampus) {
+      return (
+        <h1>
+          Campus not found!
+        </h1>
+      )
+    }
+
     const { address, description, imageUrl, name, students } = this.props.currentCampus;
     return (
       <div>
         <div className='singleCampus'>
-          <div style={{ 'font-weight': 'bold' }}> {name} </div>
+          <div style={{ 'fontWeight': 'bold' }}> {name} </div>
           <br></br>
           <img src={imageUrl} />
           <br></br>
@@ -86,15 +96,15 @@ export class Campus extends React.Component {
           {/* don't render students unless they exist
            * (and they don't exist until the component mounts,
            * after the first render). */}
-          <div style={{ 'font-weight': 'bold' }}>Students: </div>
+          <div style={{ 'fontWeight': 'bold' }}>Students: </div>
           <br></br>
           <div>
             {
               students &&
               students
                 .map(student => {
-                  return <div>
-                    <div id={student.id} key={student.id} onClick={e => this.getStudent(e)}>
+                  return <div key={student.id}>
+                    <div id={student.id} onClick={e => this.getStudent(e)}>
                       Name: <i> {student.firstName} {student.lastName} </i>
                       <br></br>
                       Email: <i>{student.email} </i>
