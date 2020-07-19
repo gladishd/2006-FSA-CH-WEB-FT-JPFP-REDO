@@ -44,7 +44,7 @@ export const postNewStudent = (studentObject) => {
       const { data } = response;
       dispatch(addNewStudent(data));
     } catch (error) {
-
+      console.log('did an error happen')
     }
   }
 }

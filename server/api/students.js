@@ -29,6 +29,7 @@ router.post('/', async (req, res, next) => {
     const campus = await Student.create(req.body);
     res.json(campus);
   } catch (error) {
+    // console.log('did an error happen')
     console.error(error)
   }
 })

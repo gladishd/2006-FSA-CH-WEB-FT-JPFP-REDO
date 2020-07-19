@@ -35,7 +35,8 @@ const Student = db.define(
       validate: {
         min: 0.0,
         max: 4.0
-      }
+      },
+      defaultValue: 4.0
     }
   }
 );

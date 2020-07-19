@@ -26,18 +26,33 @@ export class StudentForm extends React.Component {
     this.props.postNewStudent(this.state);
   }
 
+  validEmail(email) {
+    return (email.indexOf('@') !== -1 &&
+      email.indexOf('.') !== -1 &&
+      email.lastIndexOf('.') > email.indexOf('@'));
+  }
+
   render() {
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label htmlFor="firstName">First Name: </label>
+          <label htmlFor="firstName">
+            First Name:
+            {this.state.firstName === '' ? <span style={{ 'color': 'red' }}>*required field </span> : <span></span>}
+          </label>
           {/* the htmlFor id matches */}
           <textarea name="firstName" onChange={e => this.handleChange(e)} />
           <br></br>
-          <label htmlFor="lastName">Last Name: </label>
+          <label htmlFor="lastName">
+            Last Name:
+            {this.state.lastName === '' ? <span style={{ 'color': 'red' }}>*required field </span> : <span></span>}
+          </label>
           <textarea name="lastName" onChange={e => this.handleChange(e)} />
           <br></br>
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email">
+            Email:
+            {!this.validEmail(this.state.email) ? <span style={{ 'color': 'red' }}>*invalid email</span> : <span></span>}
+          </label>
           <textarea name="email" onChange={e => this.handleChange(e)} />
           <br></br>
           <label htmlFor="imageUrl" >Image URL: </label>

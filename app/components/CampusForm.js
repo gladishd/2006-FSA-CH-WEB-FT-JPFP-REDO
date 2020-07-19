@@ -29,10 +29,16 @@ export class CampusForm extends React.Component {
     return (
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label htmlFor="name">Campus Name: </label>
+          <label htmlFor="name">
+            {this.state.name === '' ? <span style={{ 'color': 'red' }}>*required field </span> : <span></span>}
+            Campus Name:
+          </label>
           <textarea name="name" onChange={e => this.handleChange(e)} />
           <br></br>
-          <label htmlFor="address">Address: </label>
+          <label htmlFor="address">
+            {this.state.address === '' ? <span style={{ 'color': 'red' }}>*required field </span> : <span></span>}
+            Address:
+          </label>
           <textarea name="address" onChange={e => this.handleChange(e)} />
           <br></br>
           <label htmlFor="description">Description: </label>
