@@ -34,8 +34,9 @@ export const fetchSingleCampus = (id) => {
       const { data } = response;
       dispatch(setSpecificCampus(data));
     } catch (error) {
-      console.error(error);
-    }
+      // we're not using Express, so don't use next
+      console.error(error); // console.dir
+    } // same as console.log except the output is set to std.err instead of std.out; internal-based
   }
 }
 export const postNewCampus = (campusObject) => {

@@ -10,10 +10,10 @@ export const setCampuses = (campuses) => ({
 });
 
 // thunk creator
-export const fetchCampuses = () => {
+export const fetchCampuses = () => { // download chrome debugging extensions for react and redux
   return async (dispatch) => {
     try {
-      const response = await axios.get('/api/campuses');
+      const response = await axios.get('/api/campuses'); // response.data = await
       const { data } = response;
       /* because the response has
        * status, data, headers and config */

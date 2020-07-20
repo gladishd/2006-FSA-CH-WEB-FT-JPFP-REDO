@@ -6,7 +6,7 @@ import CampusUpdateForm from './CampusUpdateForm';
 
 export class Campus extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); // (props) (best practice) or ()?
     this.state = {
       campusId: this.props.match.params.campusId,
       name: "",

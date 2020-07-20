@@ -156,7 +156,7 @@ const seed = async () => {
 
     await Promise.all(studentsToPopulate.map(student => Student.create(student)));
   } catch (err) {
-    console.log(red(err));
+    console.log(red(err)); // colors the error message red using chalk
   }
 };
 

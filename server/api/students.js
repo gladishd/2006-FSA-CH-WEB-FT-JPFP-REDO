@@ -4,13 +4,13 @@ const Campus = require('../db/campus');
 
 // this is already at /students in ..index.js and so we don't need to specify the /students here.
 router.get('/', async (req, res, next) => {
-  try {
+  try { // have to include req, as req (convention)
     const studentData = await Student.findAll();
     res.json(studentData);
   } catch (error) {
     console.error(error)
   }
-});
+}); // router.use is fuzzy matching
 
 router.get('/:studentId', async (req, res, next) => {
   try {
@@ -24,6 +24,7 @@ router.get('/:studentId', async (req, res, next) => {
   }
 })
 
+// next is made possible with Express
 router.post('/', async (req, res, next) => {
   try {
     const campus = await Student.create(req.body);
